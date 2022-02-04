@@ -29,10 +29,14 @@
     <label for="selectCategory">Categoria</label>
     <select class="form-select" 
     name="category_id"
-     id="category_id">
-      <option selected>Nessuna</option>
+    id="category_id">
+      <option>Nessuna</option>
+
       @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option>
+        <option 
+        @if($category->id == old('category_id')) selected @endif
+        
+        value="{{$category->id}}">{{$category->name}}</option>
       @endforeach
 
     </select>

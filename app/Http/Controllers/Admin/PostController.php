@@ -48,12 +48,14 @@ class PostController extends Controller
         $data = $request->all();
 
         $new_post = new Post();
+
         $new_post->fill($data);
+
         $new_post->slug = Str::slug($new_post->title, '-');
 
         $new_post->save();
 
-        return redirect('admin.posts.show', $new_post);
+        return redirect()->route('admin.posts.show', $new_post);
       
     }
 

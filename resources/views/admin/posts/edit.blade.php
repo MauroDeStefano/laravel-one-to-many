@@ -29,10 +29,15 @@
     </p>
     @enderror
     <label for="selectCategory">Categoria</label>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Nessuna</option>
+    <select class="form-select" 
+    name="category_id"
+    id="category_id">
+      <option>Nessuna</option>
       @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option>
+        <option
+        @if ($category->id == old('category_id', $post->category_id)) selected
+        @endif
+        value="{{$category->id}}">{{$category->name}}</option>
       @endforeach
 
     </select>
